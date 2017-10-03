@@ -1,0 +1,7 @@
+<md-select placeholder="Från" [(ngModel)]="selectedValue" name="wharf">
+    <md-option *ngFor="let wharf of wharfes" [value]="wharf.value">
+      {{wharf.viewValue}}
+    </md-option>
+</md-select>
+
+<button md-button>Click me!</button>
