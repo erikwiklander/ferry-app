@@ -11,8 +11,8 @@ export class FerryCountdownComponent implements OnInit {
 
   wharfes = [
     {value: 'luma', viewValue: 'Luma'},
-    {value: 'barn', viewValue: 'Barnängen'},
-    {value: 'henr', viewValue: 'Henriksdal'}
+    {value: 'barnangen', viewValue: 'Barnängen'},
+    {value: 'henriksdal', viewValue: 'Henriksdal'}
   ];
 
   constructor() { }
