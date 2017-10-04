@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { FerryCountdownComponent } from './ferry-countdown/ferry-countdown.component';
+import { TimetableService } from './timetable.service';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { FerryCountdownComponent } from './ferry-countdown/ferry-countdown.compo
     MatSelectModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [TimetableService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

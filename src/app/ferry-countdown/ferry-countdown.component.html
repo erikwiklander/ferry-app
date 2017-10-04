@@ -1,22 +1,15 @@
 <md-card>
-
-
         <md-select placeholder="Från" [(ngModel)]="selectedValue" name="wharf">
             <md-option *ngFor="let wharf of wharfes" [value]="wharf.value">
               {{wharf.viewValue}}
             </md-option>
         </md-select>
-
-        <div>Nästa avång från Luma</div>
         <div>kl 15.15</div>
         <div>mot Barnängen</div>
         <div>Nedräkning:</div>
         <div>7:25</div>
-
-<!--
-
-        <h1 class="mat-display-1">Awesome</h1>
-  Nästa avång från Luma går klockan 15:00
-<section>Yes</section>
--->
+        <div>{{ now }}</div>
+        <div>{{ nextDeparture }}</div>
+        <div>{{ nextDepartureDate }}</div>
+        <div>{{ countdown }}</div>
 </md-card>
