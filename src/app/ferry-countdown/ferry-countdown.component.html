@@ -4,12 +4,7 @@
               {{wharf.viewValue}}
             </md-option>
         </md-select>
-        <div>kl 15.15</div>
+        <div><span>kl</span> {{ nextDepartureDate | date:'HH.mm'}}</div>
         <div>mot Barnängen</div>
-        <div>Nedräkning:</div>
-        <div>7:25</div>
-        <div>{{ now }}</div>
-        <div>{{ nextDeparture }}</div>
-        <div>{{ nextDepartureDate }}</div>
-        <div>{{ countdown }}</div>
+        <div>{{ countdown | countdown}}</div>
 </md-card>

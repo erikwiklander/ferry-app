@@ -9,28 +9,26 @@ import { Departure } from './../departure.model';
 })
 export class FerryCountdownComponent implements OnInit {
 
-  now: Date;
   nextDeparture: Departure;
   nextDepartureDate: Date;
   countdown: number;
   selectedValue: string;
 
   wharfes = [
-    {value: 'luma', viewValue: 'Luma'},
-    {value: 'barnangen', viewValue: 'Barnängen'},
-    {value: 'henriksdal', viewValue: 'Henriksdal'}
+    { value: 'luma', viewValue: 'Luma' },
+    { value: 'barnangen', viewValue: 'Barnängen' },
+    { value: 'henriksdal', viewValue: 'Henriksdal' }
   ];
 
   constructor(private ttService: TimetableService) { }
 
   ngOnInit() {
-    this.now = new Date();
 
     window.setInterval(() => {
-      this.now = new Date();
-      this.nextDeparture = this.ttService.nextDeparture(this.now);
+      const now = new Date();
+      this.nextDeparture = this.ttService.nextDeparture(now);
       this.nextDepartureDate = this.nextDeparture.date;
-      this.countdown = this.nextDepartureDate.getTime() - this.now.getTime();
+      this.countdown = this.nextDepartureDate.getTime() - now.getTime();
     }, 1000);
 
 

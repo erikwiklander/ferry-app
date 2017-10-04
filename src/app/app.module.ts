@@ -7,12 +7,14 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { FerryCountdownComponent } from './ferry-countdown/ferry-countdown.component';
 import { TimetableService } from './timetable.service';
+import { CountdownPipe } from './countdown.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FerryCountdownComponent
+    FerryCountdownComponent,
+    CountdownPipe
   ],
   imports: [
     BrowserModule,
