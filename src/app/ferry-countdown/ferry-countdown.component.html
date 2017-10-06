@@ -1,10 +1,15 @@
-<md-card>
-        <md-select placeholder="Från" [(ngModel)]="selectedValue" name="wharf">
-            <md-option *ngFor="let wharf of wharfes" [value]="wharf.value">
-              {{wharf.viewValue}}
-            </md-option>
-        </md-select>
-        <div><span>kl</span> {{ nextDepartureDate | date:'HH.mm'}}</div>
-        <div>mot Barnängen</div>
-        <div>{{ countdown | countdown}}</div>
-</md-card>
+<mat-card>
+
+  <form>
+    <mat-form-field>
+      <mat-select placeholder="Från" [(ngModel)]="selectedValue" name="wharf">
+        <mat-option *ngFor="let wharf of wharfes" [value]="wharf.value">
+          {{wharf.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div><span>kl</span> {{ nextDepartureDate | date:'HH.mm'}}</div>
+    <div>mot Barnängen</div>
+    <div>{{ countdown | countdown}}</div>
+  </form>
+</mat-card>
