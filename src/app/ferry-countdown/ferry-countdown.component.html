@@ -1,15 +1,19 @@
 <mat-card>
-
   <form>
     <mat-form-field>
-      <mat-select placeholder="Från" [(ngModel)]="selectedValue" name="wharf">
+      <mat-select placeholder="Välj brygga" [(ngModel)]="from" name="wharf">
         <mat-option *ngFor="let wharf of wharfes" [value]="wharf.value">
           {{wharf.viewValue}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <div><span>kl</span> {{ nextDepartureDate | date:'HH.mm'}}</div>
-    <div>mot Barnängen</div>
-    <div>{{ countdown | countdown}}</div>
   </form>
+</mat-card>
+
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ nextDepartureDate | date:'HH.mm'}}</mat-card-title>
+      <mat-card-subtitle>{{ nextDestination | destination:from }}</mat-card-subtitle>
+      <img mat-card-avatar src="../../../assets/ferry.png" alt="Photo of a Shiba Inu">
+    </mat-card-header>
 </mat-card>

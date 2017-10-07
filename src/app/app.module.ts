@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { FerryCountdownComponent } from './ferry-countdown/ferry-countdown.component';
 import { TimetableService } from './timetable.service';
 import { CountdownPipe } from './countdown.pipe';
+import { DestinationPipe } from './destination.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FerryCountdownComponent,
-    CountdownPipe
+    CountdownPipe,
+    DestinationPipe
   ],
   imports: [
     BrowserModule,
