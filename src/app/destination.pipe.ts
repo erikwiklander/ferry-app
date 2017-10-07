@@ -9,7 +9,7 @@ export class DestinationPipe implements PipeTransform {
     'luma': 'Luma',
     'henriksdal': 'Henriksdal',
     'barnangen': 'Barnängen',
-    'triangel': 'Triangeltrafik'
+    'triangel': 'triangeltrafik'
   };
 
   targets = {
@@ -21,7 +21,7 @@ export class DestinationPipe implements PipeTransform {
   transform(to: string, from: string): string {
 
     if (to === 'triangel') {
-      return this.labels[to] + ' (mot ' + this.targets[from] + ')';
+      return 'Mot ' + this.targets[from] + ' (' + this.labels[to] + ')';
     } else {
       return 'Mot ' + this.labels[to];
     }
