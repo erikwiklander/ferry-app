@@ -21,8 +21,11 @@
 
 <mat-card>
     <mat-card-header>
-      <mat-card-title>{{ nextDepartureDate | date:'HH.mm'}}</mat-card-title>
+      <mat-card-title>kl. {{ nextDepartureDate | date:'HH.mm'}}</mat-card-title>
       <mat-card-subtitle>{{ nextDestination | destination:from }}</mat-card-subtitle>
       <img mat-card-avatar src="../../../assets/ferry.png" alt="Färjan">
     </mat-card-header>
+    <mat-card-content>
+      Tid kvar: {{ countdown | countdown}}
+    </mat-card-content>
 </mat-card>

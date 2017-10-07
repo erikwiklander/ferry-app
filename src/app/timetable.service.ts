@@ -414,28 +414,41 @@ export class TimetableService {
       hour = 24;
     }
 
-    const key = date.getHours() * 100 + date.getMinutes();
+    let key = hour * 100 + date.getMinutes();
 
     // figure out if this is weekend or weekday
     let compDate = new Date(date.getTime());
     if (compDate.getHours() === 0) {
-      // if just after midnight, counts as day before..
+      // if just after midnight, counts as day before.. remove an hour
       compDate = new Date(compDate.getTime() - (60 * 60 * 1000));
     }
 
-    const typeOfDay = (compDate.getDay() === 6 || compDate.getDay() === 0) ? 'weekend' : 'weekday';
+    let typeOfDay = (compDate.getDay() === 6 || compDate.getDay() === 0) ? 'weekend' : 'weekday';
+    let curTable = this.timetable[from][typeOfDay];
 
-    const curTable = this.timetable[from][typeOfDay];
+    let route = this.innerNextDeparture(key, curTable);
+    if (!route) {
+      key = date.getHours() * 100 + date.getMinutes();
+      typeOfDay = (date.getDay() === 6 || date.getDay() === 0) ? 'weekend' : 'weekday';
+      curTable = this.timetable[from][typeOfDay];
+      route = this.innerNextDeparture(key, curTable);
+    }
 
-    for (const k in curTable) {
+    const depTime = new Date(date.getTime());
+    depTime.setMilliseconds(0);
+    depTime.setSeconds(0);
+    depTime.setHours(route.hour);
+    depTime.setMinutes(route.minute);
+    if (depTime < date) {
+     depTime.setTime(depTime.getTime() + (24 * 60 * 60 * 1000));
+    }
+    return new Departure(depTime, route);
+  }
+
+  private innerNextDeparture(key: number, table: any): Route {
+    for (const k in table) {
       if (key < +k) {
-        const route = curTable[k];
-        const depTime = new Date(date.getTime());
-        depTime.setMilliseconds(0);
-        depTime.setSeconds(0);
-        depTime.setHours(route.hour);
-        depTime.setMinutes(route.minute);
-        return new Departure(depTime, route);
+        return table[k];
       }
     }
   }
