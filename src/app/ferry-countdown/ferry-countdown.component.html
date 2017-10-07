@@ -2,9 +2,21 @@
     <mat-card-header>
         <mat-card-title>Vilken brygga ska du åka ifrån?</mat-card-title>
       </mat-card-header>
-    <button mat-raised-button [color]="from === 'luma' ? 'primary' : ''" (click)="onFromChanged('luma')">LUMA</button>
-    <button mat-raised-button [color]="from === 'henriksdal' ? 'primary' : ''" (click)="onFromChanged('henriksdal')">HENRIKSDAL</button>
-    <button mat-raised-button [color]="from === 'barnangen' ? 'primary' : ''" (click)="onFromChanged('barnangen')">BARNÄNGEN</button>
+      <mat-card-content>
+          <div fxLayout="row" fxFlex>
+            <!-- Make the button slightly smaller on xs so that it fits on one row on iPhone 5 -->
+            <div fxFlex fxShow="false" fxShow.xs>
+              <button mat-raised-button [color]="from === 'luma' ? 'primary' : ''" (click)="onFromChanged('luma')" class="app-smaller-button">LUMA</button>
+              <button mat-raised-button [color]="from === 'henriksdal' ? 'primary' : ''" (click)="onFromChanged('henriksdal')" class="app-smaller-button">HENRIKSDAL</button>
+              <button mat-raised-button [color]="from === 'barnangen' ? 'primary' : ''" (click)="onFromChanged('barnangen')" class="app-smaller-button">BARNÄNGEN</button>
+            </div>
+            <div fxFlex fxHide="false" fxHide.xs>
+                <button mat-raised-button [color]="from === 'luma' ? 'primary' : ''" (click)="onFromChanged('luma')">LUMA</button>
+                <button mat-raised-button [color]="from === 'henriksdal' ? 'primary' : ''" (click)="onFromChanged('henriksdal')">HENRIKSDAL</button>
+                <button mat-raised-button [color]="from === 'barnangen' ? 'primary' : ''" (click)="onFromChanged('barnangen')">BARNÄNGEN</button>
+              </div>
+          </div>
+      </mat-card-content>
 </mat-card>
 
 <mat-card>

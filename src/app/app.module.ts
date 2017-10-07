@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule, MatToolbarModule, MatSelectModule, MatButtonModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { FerryCountdownComponent } from './ferry-countdown/ferry-countdown.component';
@@ -25,7 +26,8 @@ import { DestinationPipe } from './destination.pipe';
     MatCardModule,
     MatToolbarModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    FlexLayoutModule
   ],
   providers: [TimetableService],
   bootstrap: [AppComponent]
