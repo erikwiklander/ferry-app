@@ -32,6 +32,7 @@ export class FerryCountdownComponent implements OnInit {
 
   onFromChanged(from: string) {
     this.from = from;
+    this.updateValues();
   }
 
   updateValues() {
