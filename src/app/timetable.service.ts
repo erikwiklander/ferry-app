@@ -99,7 +99,7 @@ export class TimetableService {
     2400: new Route('triangel', 0, 0)
   };
 
-  nextDeparture(date: Date): Departure {
+  nextDeparture(date: Date, from: string): Departure {
 
     let hour = date.getHours();
     if (hour === 0) {

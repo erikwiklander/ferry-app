@@ -1,19 +1,16 @@
 <mat-card>
-  <form>
-    <mat-form-field>
-      <mat-select placeholder="Välj brygga" [(ngModel)]="from" name="wharf">
-        <mat-option *ngFor="let wharf of wharfes" [value]="wharf.value">
-          {{wharf.viewValue}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </form>
+    <mat-card-header>
+        <mat-card-title>Vilken brygga ska du åka ifrån?</mat-card-title>
+      </mat-card-header>
+    <button mat-raised-button [color]="from === 'luma' ? 'primary' : ''" (click)="onFromChanged('luma')">LUMA</button>
+    <button mat-raised-button [color]="from === 'henriksdal' ? 'primary' : ''" (click)="onFromChanged('henriksdal')">HENRIKSDAL</button>
+    <button mat-raised-button [color]="from === 'barnangen' ? 'primary' : ''" (click)="onFromChanged('barnangen')">BARNÄNGEN</button>
 </mat-card>
 
 <mat-card>
     <mat-card-header>
       <mat-card-title>{{ nextDepartureDate | date:'HH.mm'}}</mat-card-title>
       <mat-card-subtitle>{{ nextDestination | destination:from }}</mat-card-subtitle>
-      <img mat-card-avatar src="../../../assets/ferry.png" alt="Photo of a Shiba Inu">
+      <img mat-card-avatar src="../../../assets/ferry.png" alt="Färjan">
     </mat-card-header>
 </mat-card>

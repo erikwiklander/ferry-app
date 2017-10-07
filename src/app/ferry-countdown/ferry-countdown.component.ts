@@ -13,7 +13,7 @@ export class FerryCountdownComponent implements OnInit {
   nextDepartureDate: Date;
   nextDestination: string;
   countdown: number;
-  from: string;
+  from = 'luma';
 
   wharfes = [
     { value: 'luma', viewValue: 'Luma' },
@@ -30,9 +30,13 @@ export class FerryCountdownComponent implements OnInit {
     }, 1000);
   }
 
+  onFromChanged(from: string) {
+    this.from = from;
+  }
+
   updateValues() {
       const now = new Date();
-      this.nextDeparture = this.ttService.nextDeparture(now);
+      this.nextDeparture = this.ttService.nextDeparture(now, this.from);
       this.nextDepartureDate = this.nextDeparture.date;
       this.nextDestination = this.nextDeparture.route.to;
       this.countdown = this.nextDepartureDate.getTime() - now.getTime();
