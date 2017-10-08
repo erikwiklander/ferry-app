@@ -10,9 +10,6 @@ import { Departure } from './../departure.model';
 export class FerryCountdownComponent implements OnInit {
 
   nextDeparture: Departure;
-  nextDepartureDate: Date;
-  nextDestination: string;
-  countdown: number;
   from = 'luma';
   now: Date;
 
@@ -40,8 +37,5 @@ export class FerryCountdownComponent implements OnInit {
       const now = new Date();
       this.now = now;
       this.nextDeparture = this.ttService.nextDeparture(now, this.from);
-      this.nextDepartureDate = this.nextDeparture.date;
-      this.nextDestination = this.nextDeparture.route.to;
-      this.countdown = this.nextDepartureDate.getTime() - now.getTime();
   }
 }

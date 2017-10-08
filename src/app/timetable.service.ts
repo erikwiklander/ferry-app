@@ -442,7 +442,7 @@ export class TimetableService {
     if (depTime < date) {
      depTime.setTime(depTime.getTime() + (24 * 60 * 60 * 1000));
     }
-    return new Departure(depTime, route);
+    return new Departure(depTime, route, depTime.getTime() - date.getTime());
   }
 
   private innerNextDeparture(key: number, table: any): Route {
