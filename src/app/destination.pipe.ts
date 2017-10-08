@@ -23,7 +23,7 @@ export class DestinationPipe implements PipeTransform {
     if (to === 'triangel') {
       return 'mot ' + this.targets[from];
     } else {
-      return 'Mot ' + this.labels[to];
+      return 'mot ' + this.labels[to];
     }
   }
 
