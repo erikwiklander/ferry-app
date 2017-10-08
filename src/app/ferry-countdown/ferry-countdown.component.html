@@ -19,13 +19,18 @@
       </mat-card-content>
 </mat-card>
 
-<mat-card>
+<mat-card *ngFor="let departure of departures; let i = index">
     <mat-card-header>
-      <mat-card-title>kl. {{ nextDeparture.date | date:'HH.mm'}}</mat-card-title>
-      <mat-card-subtitle>{{ nextDeparture.route.to | destination:from }} ({{ nextDeparture.route.to === 'triangel' ? 'triangeltrafik' : 'skytteltrafik' }})</mat-card-subtitle>
+      <mat-card-title>kl. {{ departure.date | date:'HH.mm'}}</mat-card-title>
+      <mat-card-subtitle>{{ departure.route.to | destination:from }} ({{ departure.route.to === 'triangel' ? 'triangeltrafik' : 'skytteltrafik' }})</mat-card-subtitle>
       <img mat-card-avatar src="../../../assets/ferry.png" alt="Färjan">
     </mat-card-header>
     <mat-card-content>
-      Nedräkning: {{ nextDeparture.countdown | countdown}}
+      Nedräkning: {{ departure.countdown | countdown}}
     </mat-card-content>
 </mat-card>
+
+<div style="text-align: center; padding-top: 15px">
+  <button mat-button (click)="onClickShowMore()" *ngIf="nofDepartures < 50">VISA FLER</button>
+  <button mat-button (click)="onClickShowLess()" *ngIf="nofDepartures > 1">VISA FÄRRE</button>
+</div>

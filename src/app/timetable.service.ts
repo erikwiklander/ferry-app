@@ -407,7 +407,21 @@ export class TimetableService {
     }
   };
 
-  nextDeparture(date: Date, from: string): Departure {
+
+  nextDepartures(now: Date, from: string, nofDepartures: number): Departure[] {
+
+    let d = now;
+    const res = [];
+    for (let i = 0; i < nofDepartures; i++) {
+      const dep = this.nextDeparture(d, now, from);
+      res.push(dep);
+      d = dep.date;
+    }
+
+    return res;
+  }
+
+  private nextDeparture(date: Date, now: Date, from: string): Departure {
 
     let hour = date.getHours();
     if (hour === 0) {
@@ -442,7 +456,7 @@ export class TimetableService {
     if (depTime < date) {
      depTime.setTime(depTime.getTime() + (24 * 60 * 60 * 1000));
     }
-    return new Departure(depTime, route, depTime.getTime() - date.getTime());
+    return new Departure(depTime, route, depTime.getTime() - now.getTime());
   }
 
   private innerNextDeparture(key: number, table: any): Route {
