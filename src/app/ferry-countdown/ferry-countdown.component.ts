@@ -1,5 +1,7 @@
+import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
 import { TimetableService } from './../timetable.service';
-import { Component, OnInit } from '@angular/core';
 import { Departure } from './../departure.model';
 
 @Component({
@@ -7,11 +9,12 @@ import { Departure } from './../departure.model';
   templateUrl: './ferry-countdown.component.html',
   styleUrls: ['./ferry-countdown.component.css']
 })
-export class FerryCountdownComponent implements OnInit {
+export class FerryCountdownComponent implements OnInit, OnDestroy {
 
   departures: Departure[] = [];
   from = 'luma';
   nofDepartures = 1;
+  intervalId: number;
 
   wharfes = [
     { value: 'luma', viewValue: 'Luma' },
@@ -19,19 +22,27 @@ export class FerryCountdownComponent implements OnInit {
     { value: 'henriksdal', viewValue: 'Henriksdal' }
   ];
 
-  constructor(private ttService: TimetableService) { }
+  constructor(private ttService: TimetableService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    if (this.route.snapshot.url && this.route.snapshot.url[0]) {
+      this.from = this.route.snapshot.url[0].path;
+    } else {
+      this.from = 'luma';
+    }
+
     this.updateValues();
-    window.setInterval(() => {
+    this.intervalId = window.setInterval(() => {
       this.updateValues();
     }, 1000);
   }
 
+  ngOnDestroy() {
+    window.clearInterval(this.intervalId);
+  }
+
   onFromChanged(from: string) {
-    this.from = from;
-    this.nofDepartures = 1;
-    this.updateValues();
+    this.router.navigate([from]);
   }
 
   updateValues() {
