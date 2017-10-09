@@ -21,7 +21,7 @@
 
 <mat-card *ngFor="let departure of departures; let i = index">
     <mat-card-header>
-      <mat-card-title>kl. {{ departure.date | date:'HH.mm'}}</mat-card-title>
+      <mat-card-title>kl. {{ departure.date.getHours() < 10 ? '0' + departure.date.getHours() : departure.date.getHours() }}.{{ departure.date.getMinutes() < 10 ? '0' + departure.date.getMinutes() : departure.date.getMinutes() }}</mat-card-title>
       <mat-card-subtitle>{{ departure.route.to | destination:from }} ({{ departure.route.to === 'triangel' ? 'triangeltrafik' : 'skytteltrafik' }})</mat-card-subtitle>
       <img mat-card-avatar src="/assets/ferry.png" alt="Färjan">
     </mat-card-header>
