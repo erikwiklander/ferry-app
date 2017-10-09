@@ -23,7 +23,7 @@
     <mat-card-header>
       <mat-card-title>kl. {{ departure.date | date:'HH.mm'}}</mat-card-title>
       <mat-card-subtitle>{{ departure.route.to | destination:from }} ({{ departure.route.to === 'triangel' ? 'triangeltrafik' : 'skytteltrafik' }})</mat-card-subtitle>
-      <img mat-card-avatar src="../../../assets/ferry.png" alt="Färjan">
+      <img mat-card-avatar src="/assets/ferry.png" alt="Färjan">
     </mat-card-header>
     <mat-card-content>
       Nedräkning: {{ departure.countdown | countdown}}
