@@ -53,7 +53,6 @@ export class FerryCountdownComponent implements OnInit, OnDestroy {
   onClickShowMore() {
     this.nofDepartures++;
     this.updateValues();
-    console.log('Show more');
   }
 
   onClickShowLess() {

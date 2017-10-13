@@ -4,17 +4,12 @@
       </mat-card-header>
       <mat-card-content>
           <div fxLayout="row" fxFlex>
-            <!-- Make the button slightly smaller on xs so that it fits on one row on iPhone 5 -->
-            <div fxFlex fxShow="false" fxShow.xs>
-              <button mat-raised-button [color]="from === 'luma' ? 'primary' : ''" (click)="onFromChanged('luma')" class="app-smaller-button">LUMA</button>
-              <button mat-raised-button [color]="from === 'henriksdal' ? 'primary' : ''" (click)="onFromChanged('henriksdal')" class="app-smaller-button">HENRIKSDAL</button>
-              <button mat-raised-button [color]="from === 'barnangen' ? 'primary' : ''" (click)="onFromChanged('barnangen')" class="app-smaller-button">BARNÄNGEN</button>
+            <div>
+            <!-- Make the button slightly smaller on xs so that it fits on one row on iPhone 5 --> 
+              <a mat-raised-button [color]="from === 'luma' ? 'primary' : ''" [routerLink]="['/luma']" ngClass.xs="app-smaller-button">LUMA</a>
+              <a mat-raised-button [color]="from === 'henriksdal' ? 'primary' : ''" [routerLink]="['/henriksdal']" ngClass.xs="app-smaller-button">HENRIKSDAL</a>
+              <a mat-raised-button [color]="from === 'barnangen' ? 'primary' : ''" [routerLink]="['/barnangen']" ngClass.xs="app-smaller-button">BARNÄNGEN</a>
             </div>
-            <div fxFlex fxHide="false" fxHide.xs>
-                <button mat-raised-button [color]="from === 'luma' ? 'primary' : ''" (click)="onFromChanged('luma')">LUMA</button>
-                <button mat-raised-button [color]="from === 'henriksdal' ? 'primary' : ''" (click)="onFromChanged('henriksdal')">HENRIKSDAL</button>
-                <button mat-raised-button [color]="from === 'barnangen' ? 'primary' : ''" (click)="onFromChanged('barnangen')">BARNÄNGEN</button>
-              </div>
           </div>
       </mat-card-content>
 </mat-card>
@@ -31,6 +26,6 @@
 </mat-card>
 
 <div style="text-align: center; padding-top: 15px">
-  <button mat-button (click)="onClickShowMore()" *ngIf="nofDepartures < 50">VISA FLER</button>
-  <button mat-button (click)="onClickShowLess()" *ngIf="nofDepartures > 1">VISA FÄRRE</button>
+  <button mat-button (click)="onClickShowMore()" *ngIf="nofDepartures < 50" style="margin-bottom: 100px">VISA FLER</button>
+  <button mat-button (click)="onClickShowLess()" *ngIf="nofDepartures > 1" style="margin-bottom: 100px">VISA FÄRRE</button>
 </div>
