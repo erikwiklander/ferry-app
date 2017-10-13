@@ -41,10 +41,6 @@ export class FerryCountdownComponent implements OnInit, OnDestroy {
     window.clearInterval(this.intervalId);
   }
 
-  onFromChanged(from: string) {
-    this.router.navigate([from]);
-  }
-
   updateValues() {
       const now = new Date();
       this.departures = this.ttService.nextDepartures(now, this.from, this.nofDepartures);

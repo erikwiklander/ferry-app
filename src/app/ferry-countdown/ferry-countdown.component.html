@@ -6,9 +6,18 @@
           <div fxLayout="row" fxFlex>
             <div>
             <!-- Make the button slightly smaller on xs so that it fits on one row on iPhone 5 --> 
-              <a mat-raised-button [color]="from === 'luma' ? 'primary' : ''" [routerLink]="['/luma']" ngClass.xs="app-smaller-button">LUMA</a>
-              <a mat-raised-button [color]="from === 'henriksdal' ? 'primary' : ''" [routerLink]="['/henriksdal']" ngClass.xs="app-smaller-button">HENRIKSDAL</a>
-              <a mat-raised-button [color]="from === 'barnangen' ? 'primary' : ''" [routerLink]="['/barnangen']" ngClass.xs="app-smaller-button">BARNÄNGEN</a>
+              <a mat-raised-button 
+                [color]="from === 'luma' ? 'primary' : ''" 
+                [routerLink]="['/luma']" 
+                ngClass.xs="app-smaller-button">LUMA</a>
+              <a mat-raised-button 
+                [color]="from === 'henriksdal' ? 'primary' : ''" 
+                [routerLink]="['/henriksdal']" 
+                ngClass.xs="app-smaller-button">HENRIKSDAL</a>
+              <a mat-raised-button 
+                [color]="from === 'barnangen' ? 'primary' : ''" 
+                [routerLink]="['/barnangen']" 
+                ngClass.xs="app-smaller-button">BARNÄNGEN</a>
             </div>
           </div>
       </mat-card-content>
