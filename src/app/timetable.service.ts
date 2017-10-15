@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Injectable } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { FerryRoute } from './ferry-route.model';
@@ -6,7 +8,7 @@ import { Departure } from './departure.model';
 @Injectable()
 export class TimetableService {
 
-  timetable = {
+  private timetable = {
     'barnangen': {
       'weekday': {
         600: new FerryRoute('triangel', 6, 0),
@@ -407,6 +409,34 @@ export class TimetableService {
     }
   };
 
+  private departures = <BehaviorSubject<Departure[]>>new BehaviorSubject([]);
+  public num = 1;
+  public from: string;
+
+  constructor() {
+    setInterval(() => this.newValue(), 1000);
+  }
+
+  public setNum(num: number) {
+    this.num = num;
+    this.newValue();
+  }
+
+  public setFrom(from: string) {
+    this.from = from;
+    this.num = 1;
+    this.newValue();
+  }
+
+  public getDepartures() {
+    return this.departures;
+  }
+
+  private newValue() {
+    if (this.from) {
+      this.departures.next(this.nextDepartures(new Date(), this.from, this.num));
+    }
+  }
 
   nextDepartures(now: Date, from: string, nofDepartures: number): Departure[] {
 

@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
@@ -9,12 +10,11 @@ import { Departure } from './../departure.model';
   templateUrl: './ferry-countdown.component.html',
   styleUrls: ['./ferry-countdown.component.css']
 })
-export class FerryCountdownComponent implements OnInit, OnDestroy {
+export class FerryCountdownComponent implements OnInit {
 
-  departures: Departure[] = [];
   from = 'luma';
   nofDepartures = 1;
-  intervalId: number;
+  departures: Observable<Departure[]>;
 
   wharfes = [
     { value: 'luma', viewValue: 'Luma' },
@@ -25,36 +25,24 @@ export class FerryCountdownComponent implements OnInit, OnDestroy {
   constructor(private ttService: TimetableService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+
     if (this.route.snapshot.url && this.route.snapshot.url[0]) {
       this.from = this.route.snapshot.url[0].path;
     } else {
       this.from = 'luma';
     }
 
-    this.updateValues();
-    this.intervalId = window.setInterval(() => {
-      this.updateValues();
-    }, 1000);
-  }
-
-  ngOnDestroy() {
-    window.clearInterval(this.intervalId);
-  }
-
-  updateValues() {
-      const now = new Date();
-      this.departures = this.ttService.nextDepartures(now, this.from, this.nofDepartures);
+    this.departures = this.ttService.getDepartures();
+    this.ttService.setFrom(this.from);
   }
 
   onClickShowMore() {
-    this.nofDepartures++;
-    this.updateValues();
+    this.ttService.setNum(++this.nofDepartures);
   }
 
   onClickShowLess() {
     if (this.nofDepartures > 1) {
-      this.departures.splice(-1, 1);
-      this.nofDepartures--;
+      this.ttService.setNum(--this.nofDepartures);
     }
   }
 
