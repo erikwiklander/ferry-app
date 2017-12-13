@@ -25,7 +25,7 @@
 
 <mat-card *ngFor="let departure of departures | async">
     <mat-card-header>
-      <mat-card-title>kl. {{ departure.date | deptime }}</mat-card-title>
+      <mat-card-title>{{ departure.date | deptime }}</mat-card-title>
       <mat-card-subtitle>{{ departure.route.to | destination:from }} ({{ departure.route.to === 'triangel' ? 'triangeltrafik' : 'skytteltrafik' }})</mat-card-subtitle>
       <div mat-card-avatar class="material-icons" style="text-align: center; font-size: 40px">directions_boat</div>
     </mat-card-header>
