@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatToolbarModule, MatSelectModule, MatButtonModule, NoConflictStyleCompatibilityMode } from '@angular/material';
+import { MatCardModule, MatToolbarModule, MatSelectModule, MatButtonModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule, Routes } from '@angular/router';
@@ -37,7 +37,6 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatSelectModule,
     MatButtonModule,
-    NoConflictStyleCompatibilityMode,
     FlexLayoutModule,
     RouterModule.forRoot(appRoutes)
   ],
